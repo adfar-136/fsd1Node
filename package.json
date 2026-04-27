@@ -1,0 +1,26 @@
+{
+  "name": "fsd1node",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adfar-136/fsd1Node.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/adfar-136/fsd1Node/issues"
+  },
+  "homepage": "https://github.com/adfar-136/fsd1Node#readme",
+  "description": "",
+  "dependencies": {
+    "express": "^5.2.1",
+    "mongodb": "^7.2.0",
+    "mysql2": "^3.22.3",
+    "nodemon": "^3.1.14"
+  }
+}
