@@ -1,29 +1,22 @@
 const express = require("express");
 const app = express();
-
 app.use(express.json())
-
 let students = [
     {id:1,name:"Adfar",age:28, course : "MCA"},
     {id:2,name:"Rahul",age:23, course : "BCA"},
     {id:3,name:"Jashan",age:45, course : "Btech"},
     {id:4,name:"Avneesh",age:56, course : "MCA"}
 ]
-
 let nextid =5;
-
 app.get("/students",(req,res)=>{
     res.json({success:true,count:students.length,data:students})
 })
-
 app.get("/students/:id",(req,res)=>{
   let id = req.params.id;
   const student = students.find(item=>item.id === parseInt(id))
   if(!student) return res.status(404).json({success:false,message:"Student not found"})
   res.json({success:true,data:student})
-
 })
-
 app.post("/students",(req,res)=>{
     const {name,age,course}= req.body;
     if(!name || !age || !course){
@@ -32,6 +25,27 @@ app.post("/students",(req,res)=>{
     const newStudent = {id :nextid++,name,age,course};
     students.push(newStudent)
     res.json({success:true,count:students.length,data:students})
+})
+app.put("/students/:id",(req,res)=>{
+    const id = req.params.id;
+    const index = students.findIndex(item=>item.id === parseInt(id));
+    if(index === -1){
+        return res.status(400).json({error:"Student Does Not Exist"})
+    }
+    const {name,age,course} = req.body;
+    students[index] ={id,name,age,course};
+    return res.status(200).json({success :true ,data :students[index]}) 
+})
+
+app.delete("/students/:id",(req,res)=>{
+    const id = req.params.id;
+    const index = students.findIndex(item=>item.id === parseInt(id));
+    if(index === -1){
+        return res.status(400).json({error:"Student Not found"})
+    }
+
+    const deleted = students.splice(index,1)
+    return res.status(200).json({success:true,data:deleted})
 })
 
 app.listen(3000,()=>{
