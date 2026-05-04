@@ -1,0 +1,14 @@
+extends layout
+
+block content 
+  h3 All Blog Posts 
+  p There are #{posts.length} posts available 
+
+  each post in posts 
+   div 
+    h3 
+     a(href=`/blogs/${post.id}`) #{post.title}
+    p By #{post.author} -   post.date
+    p  post.summary 
+    a(href=`blogs/${post.id}`) Read this Post 
+    hr

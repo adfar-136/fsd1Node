@@ -1,0 +1,27 @@
+doctype  html
+html(lang="en")
+  head
+    title  My First Pug application
+  body
+    h1  Welcome, #{name}
+    h3  AGE: #{age}
+    h3 course: #{course}
+    table
+      thead
+        tr 
+         th Name 
+         th Grade 
+         th Score
+      tbody 
+        each student,  index in students
+         tr 
+           td  #{index + 1}
+           td  #{student.name}
+           td  #{student.grade}
+           td  #{student.marks}
+
+    
+    if  isLoggedin
+      p  welcome back
+    else 
+      p please login in again
