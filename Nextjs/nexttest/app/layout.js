@@ -1,5 +1,6 @@
 
 
+import Link from "next/link";
 
 export const metadata = {
   title: "Create Next App",
@@ -10,12 +11,8 @@ export default function RootLayout({children}) {
   return (
     <html lang="en">
       <body>
-        <header>
-          <nav>
-            <a href ="/admin">Admin</a> <br/><br/>
-            <a href ="/user">User</a>
-          </nav>
-        </header>
+        <Link href="/user">Go to User Page</Link> <br/> <br/>
+      <Link href="/products">Go to Products Page</Link>
         {children}
       </body>
     </html>
