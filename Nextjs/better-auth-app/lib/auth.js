@@ -6,7 +6,12 @@ export const auth = betterAuth({
   database : mongodbAdapter(db,{client}),
 
   baseURL : process.env.BETTER_AUTH_URL,
-
+  emailAndPassword :{
+      enabled :true,
+      minPasswordLength :8,
+      maxPasswordLength:128,
+      autoSignIn:true
+  },
   //konsi authentication
   socialProviders :{
     google : {
